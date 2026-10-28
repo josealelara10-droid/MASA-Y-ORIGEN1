@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masa & Origen | Panadería Artesanal Inteligente & Nutritiva</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                            950: '#451a03',
+                        },
+                        warm: {
+                            50: '#fdfbf7',
+                            100: '#f7f2e9',
+                            200: '#eee3d0',
+                            800: '#2c221e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .bg-pattern {
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#d97706 0.5px, transparent 0.5px), radial-gradient(#d97706 0.5px, #fdfbf7 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.05;
+        }
+    </style>
+</head>
+<body class="bg-warm-50 text-stone-800 font-sans antialiased selection:bg-amber-200 selection:text-amber-900">
+
+    <!-- BARRA SUPERIOR DE PROMOCIÓN (Redes & Conversión) -->
+    <div class="bg-amber-950 text-amber-200 text-xs py-2 px-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="bg-amber-600 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Innovación</span>
+                <span>🔥 Delivery Gratis en tu Primera Suscripción de Pan Prebiótico</span>
+            </div>
+            <div class="hidden sm:flex items-center space-x-4">
+                <span><i class="fa-brands fa-instagram text-amber-400 mr-1"></i> @masayorigen</span>
+                <span><i class="fa-brands fa-tiktok text-amber-400 mr-1"></i> @masayorigen_pan</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <nav class="sticky top-0 z-40 bg-warm-50/90 backdrop-blur-md border-b border-amber-900/10 transition-all shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- LOGO -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-wheat-awn"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-2xl text-amber-950 tracking-tight block leading-none">Masa & Origen</span>
+                        <span class="text-[10px] text-amber-700 tracking-widest uppercase font-semibold">Panadería Funcional</span>
+                    </div>
+                </a>
+
+                <!-- LINKS DE NAVEGACIÓN -->
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-700">
+                    <a href="#innovacion" class="hover:text-amber-700 transition">¿Por qué es Único?</a>
+                    <a href="#productos" class="hover:text-amber-700 transition">Menú & Catálogo</a>
+                    <a href="#suscripciones" class="hover:text-amber-700 transition">Planes de Suscripción</a>
+                    <a href="#testimonios" class="hover:text-amber-700 transition">Comunidad</a>
+                </div>
+
+                <!-- BOTÓN CARRITO & ACCIÓN -->
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleCart()" class="relative p-2.5 text-stone-700 hover:text-amber-700 transition rounded-full hover:bg-amber-100/50">
+                        <i class="fa-solid fa-basket-shopping text-xl"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-amber-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                    </button>
+                    <a href="#suscripciones" class="hidden sm:inline-flex items-center gap-2 bg-amber-800 hover:bg-amber-900 text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-md hover:shadow-lg transition">
+                        <span>Personalizar Mi Pan</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                
+                <!-- TEXTO HERO -->
+                <div class="space-y-6 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100/80 border border-amber-300 text-amber-900 text-xs font-semibold">
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-600"></i>
+                        <span>Revolución Digestiva & Nutritiva</span>
+                    </div>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-amber-950 leading-tight">
+                        El pan que ama tu Digestión y Cuida tu Salud.
+                    </h1>
+                    <p class="text-stone-600 text-base sm:text-lg leading-relaxed max-w-xl">
+                        Aromatizado de forma natural, fermentado por **48 horas** con masa madre ancestral prebiótica y bajo índice glucémico. Un sabor irresistible que no te inflama.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-4 pt-2 justify-center md:justify-start">
+                        <a href="#productos" class="w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-amber-600/30 transition text-center flex items-center justify-center gap-2">
+                            <span>Ver Menú Saludable</span>
+                            <i class="fa-solid fa-bread-slice"></i>
+                        </a>
+                        <a href="#suscripciones" class="w-full sm:w-auto bg-warm-100 hover:bg-warm-200 text-amber-950 font-semibold px-8 py-4 rounded-xl border border-amber-900/10 transition text-center">
+                            Suscripción Semanal
+                        </a>
+                    </div>
+
+                    <!-- SOCIAL PROOF RÁPIDO -->
+                    <div class="pt-6 border-t border-stone-200/80 flex items-center justify-center md:justify-start gap-6 text-xs text-stone-500">
+                        <div class="flex items-center gap-1">
+                            <i class="fa-solid fa-star text-amber-500"></i>
+                            <i class="fa-solid fa-star text-amber-500"></i>
+                            <i class="fa-solid fa-star text-amber-500"></i>
+                            <i class="fa-solid fa-star text-amber-500"></i>
+                            <i class="fa-solid fa-star text-amber-500"></i>
+                            <span class="font-bold text-stone-800 ml-1">4.9/5</span> (1,200+ Clientes)
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fa-solid fa-shield-check text-emerald-600"></i>
+                            <span>Sin Químicos ni Conservantes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMAGEN HERO -->
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-amber-200/50 rounded-3xl blur-2xl -z-10 transform -rotate-3"></div>
+                    <div class="relative bg-white p-3 rounded-2xl shadow-2xl border border-stone-100">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" 
+                             alt="Pan de Masa Madre Prebiótica" 
+                             class="rounded-xl w-full h-80 sm:h-96 object-cover">
+                        
+                        <!-- Flotante Innovación -->
+                        <div class="absolute -bottom-6 -left-6 bg-amber-950 text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 max-w-xs border border-amber-800">
+                            <div class="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-xl shrink-0">
+                                🧪
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-amber-300">Fermentación Pro-Digestión</p>
+                                <p class="text-[11px] text-stone-300">0% Inflamación abdominal comprobada por clientes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- VALOR AGREGADO / INNOVACIÓN -->
+    <section id="innovacion" class="py-16 bg-white border-y border-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-amber-600 mb-2">Valor Agregado & Innovación</h2>
+                <p class="font-serif text-3xl sm:text-4xl font-bold text-amber-950">Por qué Masa & Origen es diferente al pan tradicional</p>
+                <p class="text-stone-600 mt-3">Combinamos biotecnología de los alimentos con tradición panadera ancestral para reinventar el consumo diario de pan.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Tarjeta 1 -->
+                <div class="p-8 rounded-2xl bg-warm-50 border border-stone-100 hover:shadow-md transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-amber-950">Fermentación Lenta 48 Horas</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Durante 48 horas las bacterias naturales descomponen el gluten y la glucosa de la harina. El resultado: un pan con digestión liviana y sin picos glucémicos.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="p-8 rounded-2xl bg-warm-50 border border-stone-100 hover:shadow-md transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-microscope"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-amber-950">Enriquecido con Prebióticos</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Añadimos inulina de agave y granos antiguos que alimentan tu microbiota intestinal, convirtiendo cada rebanada en un aliado para la salud.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="p-8 rounded-2xl bg-warm-50 border border-stone-100 hover:shadow-md transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-amber-950">Suscripción "Fresh Door"</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Suscríbete y recibe el pan recien horneado en la puerta de tu casa a la hora elegida. Sin conservantes artificiales ni desperdicios.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO DE PRODUCTOS / SERVICIOS CON PRECIOS -->
+    <section id="productos" class="py-20 bg-warm-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-amber-600 mb-2">Nuestro Menú</h2>
+                    <p class="font-serif text-3xl sm:text-4xl font-bold text-amber-950">Productos Destacados</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex gap-2 overflow-x-auto pb-2">
+                    <button onclick="filterProducts('todos')" class="filter-btn active bg-amber-800 text-white text-xs font-bold px-4 py-2 rounded-full">Todos</button>
+                    <button onclick="filterProducts('hogar')" class="filter-btn bg-white hover:bg-amber-100 text-stone-700 text-xs font-bold px-4 py-2 rounded-full border border-stone-200">Panes de Masa Madre</button>
+                    <button onclick="filterProducts('dulce')" class="filter-btn bg-white hover:bg-amber-100 text-stone-700 text-xs font-bold px-4 py-2 rounded-full border border-stone-200">Repostería Funcional</button>
+                </div>
+            </div>
+
+            <!-- GRID DE PRODUCTOS -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+                
+                <!-- Producto 1 -->
+                <div class="product-card hogar bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=600&q=80" alt="Hazaña Ancestral" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-amber-900 text-white text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">Bestseller</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-lg text-amber-950">Pan Hogaza Ancestral Masa Madre</h3>
+                                <span class="font-bold text-amber-700 text-lg">$16.500</span>
+                            </div>
+                            <p class="text-stone-600 text-xs leading-relaxed mb-4">
+                                100% harina de trigo orgánico, agua filtrada, sal marina y masa madre de 12 años. 48 horas de fermentación.
+                            </p>
+                            <div class="flex items-center gap-2 text-[11px] text-amber-800 bg-amber-50 p-2 rounded-lg mb-4">
+                                <i class="fa-solid fa-leaf"></i>
+                                <span>Bajo Índice Glucémico | Digestión Ligera</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="addToCart('Pan Hogaza Ancestral Masa Madre', 16500)" class="w-full bg-amber-100 hover:bg-amber-600 hover:text-white text-amber-900 font-semibold py-2.5 rounded-xl transition text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                            <span>Agregar al Carrito</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card dulce bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Croissant Keto" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-emerald-700 text-white text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">Sin Azúcar Añadida</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-lg text-amber-950">Croissant Mantequilla de Pastoreo</h3>
+                                <span class="font-bold text-amber-700 text-lg">$8.900</span>
+                            </div>
+                            <p class="text-stone-600 text-xs leading-relaxed mb-4">
+                                Hojaldrado tradicional con mantequilla grass-fed al 100%, horneado diariamente.
+                            </p>
+                            <div class="flex items-center gap-2 text-[11px] text-amber-800 bg-amber-50 p-2 rounded-lg mb-4">
+                                <i class="fa-solid fa-cow"></i>
+                                <span>Mantequilla de Vacas Libres</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="addToCart('Croissant Mantequilla de Pastoreo', 8900)" class="w-full bg-amber-100 hover:bg-amber-600 hover:text-white text-amber-900 font-semibold py-2.5 rounded-xl transition text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                            <span>Agregar al Carrito</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card hogar bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Pan Multigrano" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-amber-900 text-white text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">Alto en Fibra</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-lg text-amber-950">Pan Molde Multigrano Prebiótico</h3>
+                                <span class="font-bold text-amber-700 text-lg">$18.000</span>
+                            </div>
+                            <p class="text-stone-600 text-xs leading-relaxed mb-4">
+                                Mezcla de chía, linaza, girasol y quinoa germinada enriquecida con inulina vegetal.
+                            </p>
+                            <div class="flex items-center gap-2 text-[11px] text-amber-800 bg-amber-50 p-2 rounded-lg mb-4">
+                                <i class="fa-solid fa-seedling"></i>
+                                <span>Salud Intestinal Reforzada</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="addToCart('Pan Molde Multigrano Prebiótico', 18000)" class="w-full bg-amber-100 hover:bg-amber-600 hover:text-white text-amber-900 font-semibold py-2.5 rounded-xl transition text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                            <span>Agregar al Carrito</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- COTIZADOR DE SUSCRIPCIONES (Nivel de Innovación) -->
+    <section id="suscripciones" class="py-20 bg-amber-950 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Innovación en Servicio</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-amber-100 mt-2">Planes de Suscripción Recurrente</h2>
+                <p class="text-amber-200/80 text-sm mt-2">Configura la entrega de tus panes favoritos en la puerta de tu casa. Ahorra hasta un 20% respecto a compras individuales.</p>
+            </div>
+
+            <!-- CALCULADOR DE SUSCRIPCIÓN INTERACTIVO -->
+            <div class="max-w-3xl mx-auto bg-amber-900/60 rounded-3xl p-6 sm:p-10 border border-amber-700/50 backdrop-blur-md">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-xs font-bold text-amber-300 uppercase mb-2">1. Selecciona tu Frecuencia</label>
+                            <select id="sub-frequency" onchange="calculateSubscription()" class="w-full bg-amber-950 border border-amber-700 rounded-xl p-3 text-sm text-amber-100 focus:ring-2 focus:ring-amber-500 outline-none">
+                                <option value="sem">Semanal (Envío cada 7 días)</option>
+                                <option value="qui">Quincenal (Envío cada 15 días)</option>
+                                <option value="mes">Mensual (Envío 1 vez al mes)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-amber-300 uppercase mb-2">2. Cantidad de Panes por Entrega</label>
+                            <div class="flex items-center gap-4">
+                                <input type="range" id="sub-quantity" min="2" max="10" value="3" oninput="calculateSubscription()" class="w-full accent-amber-500 cursor-pointer">
+                                <span id="sub-quantity-val" class="font-bold text-xl text-amber-400 w-8 text-center">3</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-amber-300 uppercase mb-2">3. Incluir Repostería Saludable</label>
+                            <div class="flex gap-4">
+                                <label class="flex items-center gap-2 text-xs text-amber-200 cursor-pointer">
+                                    <input type="checkbox" id="sub-pastry" onchange="calculateSubscription()" class="rounded accent-amber-500">
+                                    <span>Añadir 2 Croissants / semana (+ $15.000)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RESUMEN PRECIO -->
+                    <div class="bg-amber-950 p-6 rounded-2xl border border-amber-800 text-center space-y-4">
+                        <span class="text-xs text-amber-400 font-semibold uppercase">Total Estimado Mensual</span>
+                        <div class="text-4xl font-extrabold text-amber-300" id="sub-total">$58.500 <span class="text-xs text-amber-400/80 font-normal">/mes</span></div>
+                        <p class="text-[11px] text-amber-200/70">
+                            Incluye despacho gratis directo a tu domicilio todos los martes o jueves.
+                        </p>
+                        <button onclick="confirmSubscription()" class="w-full bg-amber-500 hover:bg-amber-600 text-amber-950 font-bold py-3 rounded-xl transition text-sm shadow-md">
+                            Suscribirme Ahora
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRUEBA SOCIAL / REDES SOCIALES & CREDIBILIDAD -->
+    <section id="testimonios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-600">Comunidad en Redes Sociales</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-amber-950 mt-2">Lo que dicen nuestros clientes en Instagram & TikTok</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonio 1 -->
+                <div class="bg-warm-50 p-6 rounded-2xl border border-stone-200/80 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded-full object-cover" alt="Usuario Instagram">
+                            <div>
+                                <h4 class="font-bold text-xs text-stone-900">@valeria_fitness</h4>
+                                <span class="text-[10px] text-stone-500">vía Instagram</span>
+                            </div>
+                        </div>
+                        <i class="fa-brands fa-instagram text-pink-600 text-lg"></i>
+                    </div>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        "Llevaba 2 años sin comer pan por temas digestivos. La masa madre de Masa & Origen de verdad NO inflama nada. ¡Suscrita 100% recomendada!"
+                    </p>
+                    <div class="text-amber-500 text-xs">★★★★★</div>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="bg-warm-50 p-6 rounded-2xl border border-stone-200/80 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded-full object-cover" alt="Usuario TikTok">
+                            <div>
+                                <h4 class="font-bold text-xs text-stone-900">@carlos_foodie</h4>
+                                <span class="text-[10px] text-stone-500">vía TikTok</span>
+                            </div>
+                        </div>
+                        <i class="fa-brands fa-tiktok text-stone-900 text-lg"></i>
+                    </div>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        "El pan de molde prebiótico dura facil 1 semana fresco en la mesa. La textura y crocancia de la corteza es otro nivel. 10/10."
+                    </p>
+                    <div class="text-amber-500 text-xs">★★★★★</div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="bg-warm-50 p-6 rounded-2xl border border-stone-200/80 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded-full object-cover" alt="Usuario Instagram">
+                            <div>
+                                <h4 class="font-bold text-xs text-stone-900">@dra_marianagutierrez</h4>
+                                <span class="text-[10px] text-stone-500">Nutricionista Clínica</span>
+                            </div>
+                        </div>
+                        <i class="fa-brands fa-instagram text-pink-600 text-lg"></i>
+                    </div>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        "Recomiendo este pan a todos mis pacientes. La fermentación prolongada degrada adecuadamente los fitatos y el gluten. Excelente producto."
+                    </p>
+                    <div class="text-amber-500 text-xs">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <span class="font-serif font-bold text-xl text-white block mb-2">Masa & Origen</span>
+                <p class="text-xs text-stone-400 leading-relaxed">
+                    Revolucionando la panadería artesanal con ciencia nutricional y fermentación prebiótica.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Redes Sociales</h4>
+                <div class="flex gap-4 text-lg">
+                    <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Garantía de Satisfacción</h4>
+                <p class="text-xs text-stone-400">Si tu pan no llega 100% fresco, te devolvemos el dinero sin preguntas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE CARRITO -->
+    <div id="cart-modal" class="fixed inset-0 bg-stone-950/60 backdrop-blur-sm z-50 hidden flex justify-end">
+        <div class="bg-white w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl">
+            <div>
+                <div class="flex justify-between items-center pb-4 border-b border-stone-200">
+                    <h3 class="font-bold text-lg text-amber-950">Tu Carrito de Compras</h3>
+                    <button onclick="toggleCart()" class="text-stone-400 hover:text-stone-700 text-xl">&times;</button>
+                </div>
+                <div id="cart-items" class="py-4 space-y-4 max-h-[60vh] overflow-y-auto">
+                    <!-- Elementos del carrito cargados dinámicamente -->
+                    <p class="text-xs text-stone-500 text-center py-8">Tu carrito está vacío actualmente.</p>
+                </div>
+            </div>
+            <div class="border-t border-stone-200 pt-4 space-y-4">
+                <div class="flex justify-between font-bold text-stone-800">
+                    <span>Total:</span>
+                    <span id="cart-total" class="text-amber-700">$0</span>
+                </div>
+                <button onclick="checkout()" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 rounded-xl transition text-sm">
+                    Finalizar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGICA JAVASCRIPT -->
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+            toggleCart();
+        }
+
+        function updateCart() {
+            const countEl = document.getElementById('cart-count');
+            const itemsEl = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            
+            countEl.innerText = cart.length;
+
+            if (cart.length === 0) {
+                itemsEl.innerHTML = '<p class="text-xs text-stone-500 text-center py-8">Tu carrito está vacío actualmente.</p>';
+                totalEl.innerText = '$0';
+                return;
+            }
+
+            let total = 0;
+            itemsEl.innerHTML = cart.map((item, index) => {
+                total += item.price;
+                return `
+                    <div class="flex justify-between items-center bg-warm-50 p-3 rounded-xl text-xs">
+                        <div>
+                            <p class="font-bold text-amber-950">${item.name}</p>
+                            <p class="text-amber-700 font-semibold">$${item.price.toLocaleString()}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 font-bold">Quitar</button>
+                    </div>
+                `;
+            }).join('');
+
+            totalEl.innerText = '$' + total.toLocaleString();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function checkout() {
+            if(cart.length === 0) {
+                alert("Tu carrito está vacío");
+                return;
+            }
+            alert("¡Gracias por tu pedido! Serás redirigido a la pasarela de pago segura.");
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+
+        function calculateSubscription() {
+            const qty = parseInt(document.getElementById('sub-quantity').value);
+            document.getElementById('sub-quantity-val').innerText = qty;
+            const pastry = document.getElementById('sub-pastry').checked;
+            
+            let basePrice = qty * 15000;
+            if(pastry) basePrice += 15000;
+
+            document.getElementById('sub-total').innerHTML = `$${basePrice.toLocaleString()} <span class="text-xs text-amber-400/80 font-normal">/mes</span>`;
+        }
+
+        function confirmSubscription() {
+            alert("¡Excelente elección! Te redirigiremos para completar los datos de entrega de tu suscripción.");
+        }
+
+        function filterProducts(category) {
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if(category === 'todos' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
